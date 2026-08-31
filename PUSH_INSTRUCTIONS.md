@@ -138,27 +138,17 @@ gh release view v1.0.0 --repo SWUIFT/SWUIFT.github.io
 
 ### B. Attach Marshall archives to the same release
 
-Package (needs local Marshall data / validated outputs as documented by the scripts):
-
-```bash
-# Inputs archive (see script --help for paths)
-python3 scripts/package_marshall_example.py
-
-# Outputs archive
-python3 scripts/package_marshall_output.py
-```
-
-Upload without replacing unrelated assets:
+Archives are already in the repo at `examples/artifacts/`. After the release
+exists, upload them (or let a follow-up workflow do it):
 
 ```bash
 gh release upload v1.0.0 \
   examples/artifacts/marshall_20211230_1100-2100_MST-inputs.tar.gz \
   examples/artifacts/marshall_20211230_1100-2100_MST-output.tar.gz \
-  --repo SWUIFT/SWUIFT.github.io \
-  --clobber   # only if re-uploading the same Marshall filenames
+  --repo SWUIFT/SWUIFT.github.io
 ```
 
-Omit `--clobber` on first upload.
+Digests for these two archives are already recorded in the docs.
 
 ### C. Fill digests in docs (second commit)
 
