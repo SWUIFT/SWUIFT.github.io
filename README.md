@@ -72,3 +72,5 @@ communities.” *Environmental Modelling & Software* 143 (2021): 105097. ISSN
   reuse and attribution terms.
 - [Troubleshooting and contact](https://swuift.github.io/troubleshooting/):
   common errors and support.
+
+![Repository Visitors](https://visitorbadge.io)
