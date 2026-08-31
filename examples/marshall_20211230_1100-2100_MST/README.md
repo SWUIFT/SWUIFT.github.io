@@ -77,3 +77,24 @@ swuift \
 The command displays the local license path and prompts for acceptance before
 loading the example. For a non-interactive reproduction, add
 `--accept-license`; acceptance applies only to that invocation.
+
+The simulation is intentionally not run by the preparation or packaging
+scripts. `manifest.json` is directly consumable by the public scenario CLI;
+`provenance.json` documents source hashes and transformations without recording
+machine-specific absolute paths.
+
+## Validated output artifact
+
+The completed 121-step public run can be prepared and packaged with:
+
+```bash
+python scripts/prepare_marshall_output.py
+python scripts/package_marshall_output.py
+python scripts/package_marshall_output.py --verify-only
+```
+
+Tracked `output-manifest.json`, `output-provenance.json`,
+`output-summary.json`, and `output-checksums.sha256` describe the sanitized
+output. Binary scientific outputs and representative PNGs are staged under
+`examples/artifacts/marshall_20211230_1100-2100_MST-output/`; the reproducible
+archive is written beside that directory with a `.tar.gz` suffix.

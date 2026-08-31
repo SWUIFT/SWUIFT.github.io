@@ -80,11 +80,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
-          gh release create "$RELEASE_TAG" \
-            dist/core/* dist/cli/* dist/SHA256SUMS* \
-            --verify-tag \
-            --generate-notes \
-            --title "SWUIFT $RELEASE_TAG"
+          assets=(
+            dist/core/*
+            dist/cli/*
+            dist/SHA256SUMS*
+            examples/artifacts/marshall_20211230_1100-2100_MST-inputs.tar.gz
+            examples/artifacts/marshall_20211230_1100-2100_MST-output.tar.gz
+          )
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "${assets[@]}"
+          else
+            gh release create "$RELEASE_TAG" "${assets[@]}" \
+              --verify-tag \
+              --generate-notes \
+              --title "SWUIFT $RELEASE_TAG"
+          fi
 
       - name: Report Zenodo deposition placeholder
         env:
