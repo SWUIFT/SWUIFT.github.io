@@ -7,19 +7,15 @@ Do not use temporary workflow artifacts for archival or cited research.
 
 Release page: [https://github.com/SWUIFT/SWUIFT.github.io/releases/tag/v1.0.0](https://github.com/SWUIFT/SWUIFT.github.io/releases/tag/v1.0.0)
 
-Tagged commit: [`REPLACE_AFTER_TAG`](https://github.com/SWUIFT/SWUIFT.github.io/tree/v1.0.0)
-
-> Desktop digests are `REPLACE_AFTER_BUILD` until CI publishes installers.
-> Marshall archive digests below match the archives committed under
-> `examples/artifacts/`.
+Tagged commit: [`2fedcc0`](https://github.com/SWUIFT/SWUIFT.github.io/tree/v1.0.0)
 
 ## Desktop packages
 
 | Platform | Package | Download | SHA-256 |
 |---|---|---|---|
-| Windows x64 | Installer (`.exe`) | [SWUIFT_Setup_1.0.0.exe](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_Setup_1.0.0.exe) | `REPLACE_AFTER_BUILD` |
-| macOS Apple silicon (arm64) | Disk image (`.dmg`) | [SWUIFT_macOS_arm64.dmg](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_macOS_arm64.dmg) | `REPLACE_AFTER_BUILD` |
-| macOS Intel (x86_64) | Disk image (`.dmg`) | [SWUIFT_macOS_x86_64.dmg](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_macOS_x86_64.dmg) | `REPLACE_AFTER_BUILD` |
+| Windows x64 | Installer (`.exe`) | [SWUIFT_Setup_1.0.0.exe](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_Setup_1.0.0.exe) | `778bd3988fb20cba2a1fd1b4474b2329e8a9f84ed1695e695532997bb01887e4` |
+| macOS Apple silicon (arm64) | Disk image (`.dmg`) | [SWUIFT_macOS_arm64.dmg](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_macOS_arm64.dmg) | `aea69f9e040af5efd2b632cc7b72038e98a0d501f2438d297e0c92d6745324c7` |
+| macOS Intel (x86_64) | Disk image (`.dmg`) | [SWUIFT_macOS_x86_64.dmg](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/SWUIFT_macOS_x86_64.dmg) | `7dc0ece42445af95b0f8233fb3de7234022a60aa685c30ef872453fbcb3ed1eb` |
 
 Desktop packages are published only for Windows and macOS. Linux users can use
 the CLI from a versioned source release; no Linux desktop application is built

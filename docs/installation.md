@@ -16,9 +16,9 @@ hash differs by even one character.
 
 | File | Expected SHA-256 |
 |---|---|
-| `SWUIFT_Setup_1.0.0.exe` | `REPLACE_AFTER_BUILD` |
-| `SWUIFT_macOS_arm64.dmg` | `REPLACE_AFTER_BUILD` |
-| `SWUIFT_macOS_x86_64.dmg` | `REPLACE_AFTER_BUILD` |
+| `SWUIFT_Setup_1.0.0.exe` | `778bd3988fb20cba2a1fd1b4474b2329e8a9f84ed1695e695532997bb01887e4` |
+| `SWUIFT_macOS_arm64.dmg` | `aea69f9e040af5efd2b632cc7b72038e98a0d501f2438d297e0c92d6745324c7` |
+| `SWUIFT_macOS_x86_64.dmg` | `7dc0ece42445af95b0f8233fb3de7234022a60aa685c30ef872453fbcb3ed1eb` |
 | `marshall_20211230_1100-2100_MST-inputs.tar.gz` | `3a0f719dd7747e11849b192cf6a28b12ae2ddaebccfa9189d8f922d083a64f8b` |
 | `marshall_20211230_1100-2100_MST-output.tar.gz` | `f5e244562223bace9da1b29ac605b3950f46af958a8557d03a3f1d661afb993a` |
 
@@ -40,7 +40,7 @@ Open a terminal in the folder that contains the downloaded file.
     Example:
 
     ```text
-    REPLACE_AFTER_BUILD  SWUIFT_Setup_1.0.0.exe
+    778bd3988fb20cba2a1fd1b4474b2329e8a9f84ed1695e695532997bb01887e4  SWUIFT_Setup_1.0.0.exe
     ```
 
     The left field must match the table above. For Python packages listed in
