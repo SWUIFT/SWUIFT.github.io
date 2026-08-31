@@ -52,7 +52,8 @@ jobs:
             scripts/generate_citation_data.py \
             scripts/generate_sha256_manifest.py \
             scripts/generate_timezone_docs.py \
-            scripts/verify_sha256_manifest.py
+            scripts/verify_sha256_manifest.py \
+            scripts/deposit_zenodo.py
           python -m py_compile packages/cli/swuift/timezones.py
 
       - name: Build and inspect Python distributions

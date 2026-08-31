@@ -12,6 +12,7 @@ include = [
   "scripts/generate_citation_data.py",
   "scripts/generate_sha256_manifest.py",
   "scripts/verify_sha256_manifest.py",
+  "scripts/deposit_zenodo.py",
 ]
 
 [tool.ruff.lint]
@@ -30,6 +31,7 @@ files = [
   "scripts/generate_citation_data.py",
   "scripts/generate_sha256_manifest.py",
   "scripts/verify_sha256_manifest.py",
+  "scripts/deposit_zenodo.py",
 ]
 strict = true
 pretty = true

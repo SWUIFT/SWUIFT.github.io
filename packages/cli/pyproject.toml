@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swuift"
-version = "1.0.0"
+version = "1.0.4"
 description = "SWUIFT wildfire-urban-interface simulation (Python)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "LicenseRef-SWUIFT-Research-Academic-Use"
 license-files = ["LICENSE"]
 dependencies = [
-  "swuift-core==1.0.0",
+  "swuift-core==1.0.4",
   "numpy",
   "scipy",
   "h5py",

@@ -96,14 +96,26 @@ jobs:
               --title "SWUIFT $RELEASE_TAG"
           fi
 
-      - name: Report Zenodo deposition placeholder
+      # ZENODO_ACCESS_TOKEN must be a zenodo.org token with deposit:write and
+      # deposit:actions. Configure it as a repository Actions secret before
+      # deposition. Do not enable the Zenodo GitHub webhook — that would mint a
+      # second concept DOI. This step versions the existing record
+      # 10.5281/zenodo.22184758 via /actions/newversion. Cite the concept DOI;
+      # Zenodo assigns each version DOI.
+      - name: Deposit new Zenodo version
         env:
           ZENODO_ACCESS_TOKEN: ${{ secrets.ZENODO_ACCESS_TOKEN }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
-          if [ -n "$ZENODO_ACCESS_TOKEN" ]; then
-            echo "ZENODO_ACCESS_TOKEN is configured."
-            echo "Add a reviewed Zenodo deposition step after assigning the repository DOI."
-          else
-            echo "Zenodo publication skipped: configure the ZENODO_ACCESS_TOKEN secret."
+          if [ -z "${ZENODO_ACCESS_TOKEN}" ]; then
+            echo "ZENODO_ACCESS_TOKEN is missing." >&2
+            echo "Add the repository secret, ticking deposit:write and deposit:actions." >&2
+            exit 1
           fi
-          echo "Do not add a DOI to metadata until Zenodo assigns it."
+          archive="SWUIFT.github.io-${RELEASE_TAG}.zip"
+          curl -fsSL -o "$archive" \
+            "https://github.com/SWUIFT/SWUIFT.github.io/archive/refs/tags/${RELEASE_TAG}.zip"
+          python scripts/deposit_zenodo.py \
+            --metadata .zenodo.json \
+            --concept-id 22184758 \
+            --file "$archive"

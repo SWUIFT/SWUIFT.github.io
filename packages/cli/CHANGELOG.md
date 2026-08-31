@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) where applicable.
 
+## [1.0.4] - 2026-08-31
+
+### Changed
+- Zenodo deposition now versions the existing concept DOI `10.5281/zenodo.22184758`.
+- Package version aligned with the v1.0.4 release tag.
+
 ## [1.0.0] - 2026-08-26
 
 ### Added
