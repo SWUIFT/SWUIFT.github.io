@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://swuift.github.io/assets/SWUIFT_logo.png" alt="SWUIFT" width="420">
+  <img src="docs/assets/SWUIFT_logo.png" alt="SWUIFT" width="420">
 </p>
 
 # SWUIFT
@@ -56,7 +56,7 @@ communities.” *Environmental Modelling & Software* 143 (2021): 105097. ISSN
 
 ## Model workflow
 
-![The SWUIFT simulation loop](https://swuift.github.io/assets/swuift-model-loop-dark.svg)
+![The SWUIFT simulation loop](docs/assets/swuift-model-loop-dark.svg)
 
 ## Documentation map
 
