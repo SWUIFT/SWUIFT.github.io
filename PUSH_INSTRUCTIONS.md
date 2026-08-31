@@ -14,9 +14,42 @@ Download digests in the docs are `REPLACE_AFTER_BUILD` until you publish assets.
 ## 0. Prerequisites
 
 - GitHub auth that can **admin** `SWUIFT/SWUIFT.github.io` (org owner/admin).
-- `gh` CLI logged in (`gh auth login`), or use the GitHub web UI where noted.
+- Official **GitHub CLI** (`gh`), not the unrelated PyPI package named `gh`.
+
+  ```bash
+  # If you ran `pip install gh`, remove it (wrong tool):
+  pip uninstall -y gh
+
+  # Install the real CLI (pick one):
+  conda install -y -c conda-forge gh
+  # or:  (see https://github.com/cli/cli#installation)
+
+  # Confirm you have GitHub's CLI (version 2.x), then log in:
+  gh --version
+  gh auth login
+  ```
+
 - Repo secrets still configured for desktop signing if you want signed installers
   (Apple/Windows cert secrets used by `.github/workflows/build-desktop.yml`).
+
+### No-`gh` alternative (curl + git)
+
+If `gh` is unavailable, delete releases via the API (needs a token with `repo` scope):
+
+```bash
+export GH_TOKEN=...   # or use an existing GITHUB_TOKEN / PAT
+REPO=SWUIFT/SWUIFT.github.io
+
+# List release IDs and tags
+curl -sS -H "Authorization: Bearer $GH_TOKEN" \
+  "https://api.github.com/repos/$REPO/releases?per_page=100" \
+  | python3 -c 'import json,sys; [print(r["id"], r["tag_name"]) for r in json.load(sys.stdin)]'
+
+# Delete each release by numeric id, then delete its tag:
+#   curl -sS -X DELETE -H "Authorization: Bearer $GH_TOKEN" \
+#     https://api.github.com/repos/$REPO/releases/ID
+#   git push origin :refs/tags/TAG
+```
 
 ---
 

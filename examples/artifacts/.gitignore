@@ -1,0 +1,4 @@
+# Keep generated staging trees out of git; track published release archives.
+*
+!.gitignore
+!*.tar.gz

@@ -154,7 +154,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=root / "examples" / "artifacts" / f"{EXAMPLE_ID}.tar.gz",
+        default=root / "examples" / "artifacts" / f"{EXAMPLE_ID}-inputs.tar.gz",
     )
     parser.add_argument(
         "--verify-only",

@@ -32,12 +32,12 @@ Download the public Marshall **inputs** archive from
 [Downloads](downloads.md) (release `v1.0.0`):
 
 - [marshall_20211230_1100-2100_MST-inputs.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-inputs.tar.gz)
-- SHA-256: `REPLACE_AFTER_BUILD`
+- SHA-256: `3a0f719dd7747e11849b192cf6a28b12ae2ddaebccfa9189d8f922d083a64f8b`
 
 Optional reference **outputs** archive (validated Python run):
 
 - [marshall_20211230_1100-2100_MST-output.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-output.tar.gz)
-- SHA-256: `REPLACE_AFTER_BUILD`
+- SHA-256: `f5e244562223bace9da1b29ac605b3950f46af958a8557d03a3f1d661afb993a`
 
 Extract the inputs archive:
 

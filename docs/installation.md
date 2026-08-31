@@ -19,8 +19,8 @@ hash differs by even one character.
 | `SWUIFT_Setup_1.0.0.exe` | `REPLACE_AFTER_BUILD` |
 | `SWUIFT_macOS_arm64.dmg` | `REPLACE_AFTER_BUILD` |
 | `SWUIFT_macOS_x86_64.dmg` | `REPLACE_AFTER_BUILD` |
-| `marshall_20211230_1100-2100_MST-inputs.tar.gz` | `REPLACE_AFTER_BUILD` |
-| `marshall_20211230_1100-2100_MST-output.tar.gz` | `REPLACE_AFTER_BUILD` |
+| `marshall_20211230_1100-2100_MST-inputs.tar.gz` | `3a0f719dd7747e11849b192cf6a28b12ae2ddaebccfa9189d8f922d083a64f8b` |
+| `marshall_20211230_1100-2100_MST-output.tar.gz` | `f5e244562223bace9da1b29ac605b3950f46af958a8557d03a3f1d661afb993a` |
 
 The same values appear in the SHA-256 column on [Downloads](downloads.md).
 For Python wheels and source distributions, use

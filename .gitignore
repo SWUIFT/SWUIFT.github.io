@@ -47,6 +47,10 @@ runs/
 outputs/
 results/
 artifacts/
+# Track published Marshall release archives under examples/artifacts/
+!examples/artifacts/
+!examples/artifacts/.gitignore
+!examples/artifacts/*.tar.gz
 *.h5
 *.hdf5
 *.mat

@@ -9,10 +9,9 @@ Release page: [https://github.com/SWUIFT/SWUIFT.github.io/releases/tag/v1.0.0](h
 
 Tagged commit: [`REPLACE_AFTER_TAG`](https://github.com/SWUIFT/SWUIFT.github.io/tree/v1.0.0)
 
-> Digests below are placeholders. After the `v1.0.0` GitHub Release assets
-> are published, replace every `REPLACE_AFTER_BUILD` value with the real
-> SHA-256 from the built files (and update `REPLACE_AFTER_TAG` to the short
-> commit of the annotated tag).
+> Desktop digests are `REPLACE_AFTER_BUILD` until CI publishes installers.
+> Marshall archive digests below match the archives committed under
+> `examples/artifacts/`.
 
 ## Desktop packages
 
@@ -38,8 +37,11 @@ addition to the main SWUIFT implementation article.
 
 | Archive | Contents | Download | SHA-256 |
 |---|---|---|---|
-| Inputs | Marshall example inputs | [marshall_20211230_1100-2100_MST-inputs.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-inputs.tar.gz) | `REPLACE_AFTER_BUILD` |
-| Outputs | Marshall example outputs | [marshall_20211230_1100-2100_MST-output.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-output.tar.gz) | `REPLACE_AFTER_BUILD` |
+| Inputs | Marshall example inputs | [marshall_20211230_1100-2100_MST-inputs.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-inputs.tar.gz) | `3a0f719dd7747e11849b192cf6a28b12ae2ddaebccfa9189d8f922d083a64f8b` |
+| Outputs | Marshall example outputs | [marshall_20211230_1100-2100_MST-output.tar.gz](https://github.com/SWUIFT/SWUIFT.github.io/releases/download/v1.0.0/marshall_20211230_1100-2100_MST-output.tar.gz) | `f5e244562223bace9da1b29ac605b3950f46af958a8557d03a3f1d661afb993a` |
+
+The same archives are also stored in the repository at
+[`examples/artifacts/`](https://github.com/SWUIFT/SWUIFT.github.io/tree/main/examples/artifacts).
 
 Extract the input archive to a local data directory, then point the CLI
 `--data-root` or desktop file pickers at that directory. Metadata, manifests,
