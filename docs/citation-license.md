@@ -56,15 +56,6 @@ Use the main implementation citation for SWUIFT methodology. Also cite the
 Marshall article when using the packaged Marshall example, tutorial, or
 validated outputs.
 
-## Archival DOI status
-
-No DOI has been minted for SWUIFT. The generated citation above intentionally
-omits a DOI. When a future release receives one and the DOI is added to
-`CITATION.cff`, the website generator will include it automatically.
-
-Also report the full commit SHA, input-bundle identifier, simulation window,
-and seeds in the methods or data-availability statement.
-
 ## Research and academic source-available license
 
 SWUIFT is source-available, not open source. It is offered under the
