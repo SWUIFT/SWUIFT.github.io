@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swuift-core"
-version = "1.0.0"
+version = "1.0.4"
 description = "Shared SWUIFT physics core (kernels, spread, hardening)"
 readme = "README.md"
 requires-python = ">=3.10"
