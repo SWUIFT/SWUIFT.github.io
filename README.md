@@ -73,4 +73,4 @@ communities.” *Environmental Modelling & Software* 143 (2021): 105097. ISSN
 - [Troubleshooting and contact](https://swuift.github.io/troubleshooting/):
   common errors and support.
 
-![](https://api.visitorbadge.io/api/VisitorHit?user=estruyf&repo=github-visitors-badge&countColor=%237B1E7A)
+![](https://api.visitorbadge.io/api/VisitorHit?user=estruyf&repo=https://github.com/SWUIFT/SWUIFT.github.io.git&countColor=%237B1E7A)
