@@ -28,4 +28,5 @@ authors:
   affiliation: Department of Civil, Structural and Environmental Engineering, University at Buffalo
   orcid: https://orcid.org/0000-0003-3228-0097
 author_text: Nima Masoudvaziri, Fernando Szasdi-Bardales, Utkarsh Kumar, Jinjun Xiong, and Negar Elhami-Khorasani
-bibtex: "@software{swuift,\n  author = {Masoudvaziri, Nima and Szasdi-Bardales, Fernando and Kumar, Utkarsh and Xiong, Jinjun and Elhami-Khorasani, Negar},\n  title = {SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing},\n  url = {https://swuift.github.io}\n}"
+bibtex: "@software{swuift,\n  author = {Masoudvaziri, Nima and Szasdi-Bardales, Fernando and Kumar, Utkarsh and Xiong, Jinjun and Elhami-Khorasani, Negar},\n  title = {SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing},\n  url = {https://swuift.github.io},\n  doi = {10.5281/zenodo.22184758}\n}"
+doi: 10.5281/zenodo.22184758
