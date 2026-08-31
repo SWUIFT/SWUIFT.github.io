@@ -40,12 +40,5 @@
     "thermal radiation",
     "housing density",
     "fire simulation"
-  ],
-  "related_identifiers": [
-    {
-      "identifier": "10.5281/zenodo.22184759",
-      "relation": "isIdenticalTo",
-      "scheme": "doi"
-    }
   ]
 }

@@ -4,10 +4,6 @@ title: "SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing"
 type: software
 repository-code: "https://github.com/SWUIFT/SWUIFT.github.io"
 url: "https://swuift.github.io"
-doi: 10.5281/zenodo.22184759
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.22184759
 abstract: >-
   SWUIFT models fire spread within wildland-urban interface (WUI) and urban
   communities using a semi-empirical approach. A three-domain solution is

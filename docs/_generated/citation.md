@@ -6,15 +6,12 @@
 
 **Project website:** [https://swuift.github.io](https://swuift.github.io)
 
-**DOI:** [10.5281/zenodo.22184759](https://doi.org/10.5281/zenodo.22184759)
-
 ### BibTeX
 
 ```bibtex
 @software{swuift,
   author = {Masoudvaziri, Nima and Szasdi-Bardales, Fernando and Kumar, Utkarsh and Xiong, Jinjun and Elhami-Khorasani, Negar},
   title = {SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing},
-  url = {https://swuift.github.io},
-  doi = {10.5281/zenodo.22184759}
+  url = {https://swuift.github.io}
 }
 ```
