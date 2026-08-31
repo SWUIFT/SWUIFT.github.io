@@ -1,33 +1,29 @@
 {
   "upload_type": "software",
   "title": "SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing",
-  "description": "<p>SWUIFT models fire spread within wildland-urban interface (WUI) and urban communities using a semi-empirical approach. A three-domain solution is utilized, defining wildland, transition and community domains following the neighbourhood-based housing density (NBHD) method. Near- and far-field transport mechanisms are captured, including thermal radiation and fire spotting. SWUIFT considers urban and vegetative fuels and wind, and tracks fire progression at a 10-meter resolution. Offline coupling with wildland fire spread simulators is supported. Utilize the desktop application for an interactive workflow or the command-line (CLI) for scripted and batch runs.</p><p>SWUIFT simulation results depend on input quality and modelling assumptions. Analysis of results should rely on expert interpretation.</p>",
+  "description": "Software for tracing fire spread in wildland-urban interface and urban areas.",
   "access_right": "open",
   "language": "eng",
+  "version": "1.0.4",
   "creators": [
     {
       "name": "Masoudvaziri, Nima",
-      "affiliation": "Berkshire Hathaway Specialty Insurance",
       "orcid": "0000-0002-3025-8059"
     },
     {
       "name": "Szasdi-Bardales, Fernando",
-      "affiliation": "Department of Civil, Structural and Environmental Engineering, University at Buffalo",
       "orcid": "0000-0002-9643-5919"
     },
     {
       "name": "Kumar, Utkarsh",
-      "affiliation": "Department of Computer Science, CAICC, University of Texas at San Antonio",
       "orcid": "0000-0002-4442-8645"
     },
     {
       "name": "Xiong, Jinjun",
-      "affiliation": "Department of Computer Science, CAICC, University of Texas at San Antonio",
       "orcid": "0000-0002-2620-4859"
     },
     {
       "name": "Elhami-Khorasani, Negar",
-      "affiliation": "Department of Civil, Structural and Environmental Engineering, University at Buffalo",
       "orcid": "0000-0003-3228-0097"
     }
   ],
@@ -40,5 +36,17 @@
     "thermal radiation",
     "housing density",
     "fire simulation"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/SWUIFT/SWUIFT.github.io",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.1016/j.envsoft.2021.105097",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    }
   ]
 }
