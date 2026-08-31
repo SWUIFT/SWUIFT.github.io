@@ -1,0 +1,65 @@
+# Python bytecode and environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.python-version
+
+# Packaging and test output
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+site/
+_site/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+
+# Local notes (do not publish)
+flow and capabilities.md
+
+# SWUIFT generated data and private/publication inputs
+runs/
+outputs/
+results/
+artifacts/
+*.h5
+*.hdf5
+*.mat
+*.npy
+*.npz
+*.mp4
+*.avi
+*.mov
+*.log
+
+# Release material is generated in CI
+SHA256SUMS
+SHA256SUMS.*
+*.sig
+*.sigstore.json
+*.intoto.jsonl

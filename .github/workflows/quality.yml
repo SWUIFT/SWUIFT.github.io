@@ -1,0 +1,92 @@
+name: Public quality and release boundary
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: |
+            requirements-dev.txt
+            requirements-build.txt
+
+      - name: Install quality and build tools
+        run: >-
+          python -m pip install --upgrade pip build cffconvert mypy ruff tomli
+          PyYAML twine types-PyYAML tzdata==2026.3
+
+      - name: Validate the public boundary
+        run: python scripts/check_public_boundary.py
+
+      - name: Validate release metadata
+        run: |
+          python scripts/check_release_metadata.py
+          python scripts/generate_timezone_docs.py --check
+          python scripts/generate_citation_data.py --check
+          cffconvert --validate
+          python -m json.tool .zenodo.json >/dev/null
+
+      - name: Check infrastructure Python
+        run: |
+          ruff check .
+          ruff format --check .
+          mypy
+          python -m py_compile \
+            scripts/check_public_boundary.py \
+            scripts/check_desktop_bundle.py \
+            scripts/check_jekyll_output.py \
+            scripts/check_release_metadata.py \
+            scripts/generate_citation_data.py \
+            scripts/generate_sha256_manifest.py \
+            scripts/generate_timezone_docs.py \
+            scripts/verify_sha256_manifest.py
+          python -m py_compile packages/cli/swuift/timezones.py
+
+      - name: Build and inspect Python distributions
+        run: |
+          python -m build --outdir dist/core packages/core
+          python -m build --outdir dist/cli packages/cli
+          python -m twine check dist/core/* dist/cli/*
+
+      - name: Check release checksum tooling
+        run: |
+          python scripts/generate_sha256_manifest.py dist
+          python scripts/verify_sha256_manifest.py dist/SHA256SUMS \
+            --strict-directory dist
+
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Generate citation data
+        run: |
+          python -m pip install PyYAML
+          python scripts/generate_citation_data.py
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build and audit Jekyll site
+        run: |
+          bundle exec jekyll build --strict_front_matter
+          python scripts/check_jekyll_output.py

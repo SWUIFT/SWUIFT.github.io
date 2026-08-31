@@ -1,0 +1,6 @@
+# Public runtime environment. Development and release tools live in
+# requirements-dev.txt and requirements-build.txt, respectively.
+-r requirements-cli.txt
+PySide6>=6.6
+Pillow
+tzdata==2026.3

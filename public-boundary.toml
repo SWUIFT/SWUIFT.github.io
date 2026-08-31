@@ -1,0 +1,60 @@
+schema_version = 1
+tracked_files_only = true
+allow_external_symlinks = false
+maximum_file_size_bytes = 52428800
+
+required_files = [
+  "LICENSE",
+  "CITATION.cff",
+  ".zenodo.json",
+  "THIRD_PARTY_NOTICES.md",
+  "SECURITY.md",
+]
+
+denied_paths = [
+  ".env",
+  ".env.*",
+  "**/.env",
+  "**/.env.*",
+  "**/credentials*.json",
+  "**/secrets*.json",
+  "**/*.pem",
+  "**/*.key",
+  "**/*.p12",
+  "**/*.pfx",
+  "**/*.h5",
+  "**/*.hdf5",
+  "**/*.mat",
+  "**/*.npy",
+  "**/*.npz",
+  "**/*.mp4",
+  "**/*.avi",
+  "**/*.mov",
+  "**/__pycache__/**",
+  "**/*.egg-info/**",
+  "build/**",
+  "dist/**",
+  "runs/**",
+  "outputs/**",
+  "results/**",
+  "artifacts/**",
+]
+
+denied_name_fragments = [
+  "confidential",
+  "proprietary",
+  "internal-only",
+  "do-not-distribute",
+]
+
+fallback_scan_ignores = [
+  ".git/**",
+  ".venv/**",
+  "**/__pycache__/**",
+  "**/*.egg-info/**",
+  ".mypy_cache/**",
+  ".pytest_cache/**",
+  ".ruff_cache/**",
+  "build/**",
+  "dist/**",
+]

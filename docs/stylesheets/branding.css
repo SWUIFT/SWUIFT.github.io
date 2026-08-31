@@ -1,0 +1,170 @@
+/* Brand primary: #005BBB */
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #005BBB;
+  --md-primary-fg-color--light: #3380d0;
+  --md-primary-fg-color--dark: #004894;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+  --md-accent-fg-color: #1a7fe0;
+  --md-accent-fg-color--transparent: #1a7fe01a;
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #ffffffb3;
+  --swuift-corner-size: 84px;
+}
+
+/* Use the SWUIFT artwork as the complete header identity. */
+.md-header,
+.md-header__inner {
+  min-height: 4rem;
+}
+
+.md-header__button.md-logo {
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0.2rem 0.6rem 0.2rem 0;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 3.6rem;
+  width: auto;
+}
+
+/* The logo already links to the home page; avoid repeating SWUIFT beside it. */
+.md-header__topic:first-child > .md-ellipsis {
+  display: none;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .md-header__button.md-logo img,
+  .md-header__button.md-logo svg {
+    height: 3.2rem;
+  }
+}
+
+/* Fixed corner brand marks: left = Khorasani, right = XLab */
+.swuift-corner-marks {
+  pointer-events: none;
+}
+
+.swuift-corner-mark {
+  position: fixed !important;
+  bottom: 1.25rem !important;
+  z-index: 12 !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  width: var(--swuift-corner-size) !important;
+  height: var(--swuift-corner-size) !important;
+  max-width: var(--swuift-corner-size) !important;
+  max-height: var(--swuift-corner-size) !important;
+  min-width: var(--swuift-corner-size) !important;
+  min-height: var(--swuift-corner-size) !important;
+  object-fit: contain !important;
+  aspect-ratio: 1 / 1 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.swuift-corner-mark--left {
+  left: 1.25rem !important;
+  right: auto !important;
+}
+
+.swuift-corner-mark--right {
+  right: 1.25rem !important;
+  left: auto !important;
+}
+
+/* Light theme → black marks; dark theme → white marks */
+[data-md-color-scheme="default"] .swuift-corner-mark--dark,
+[data-md-color-scheme="slate"] .swuift-corner-mark--light {
+  display: none !important;
+}
+
+/* Model-loop diagram: light SVG in default, dark SVG in slate */
+.swuift-model-loop {
+  margin: 1rem 0;
+}
+
+.swuift-model-loop img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.swuift-model-loop--dark {
+  display: none;
+}
+
+[data-md-color-scheme="default"] .swuift-model-loop--dark,
+[data-md-color-scheme="slate"] .swuift-model-loop--light {
+  display: none !important;
+}
+
+[data-md-color-scheme="default"] .swuift-model-loop--light,
+[data-md-color-scheme="slate"] .swuift-model-loop--dark {
+  display: block !important;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .swuift-corner-mark {
+    bottom: 1rem !important;
+  }
+
+  .swuift-corner-mark--left {
+    left: 0.75rem !important;
+  }
+
+  .swuift-corner-mark--right {
+    right: 0.75rem !important;
+  }
+}
+
+/* Use consistent justified alignment throughout documentation content. */
+.md-typeset {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.md-typeset pre,
+.md-typeset code {
+  text-align: left;
+}
+
+/* Wrap long text inside boxed / code / table content site-wide */
+.md-typeset pre,
+.md-typeset pre > code,
+.md-typeset .highlight,
+.md-typeset .highlight pre,
+.md-typeset .highlight code,
+.md-typeset code {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+.md-typeset .highlight {
+  overflow-x: visible !important;
+}
+
+.md-typeset pre {
+  overflow-x: visible !important;
+}
+
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset .tabbed-content,
+.md-typeset table:not([class]),
+.md-typeset td,
+.md-typeset th {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.md-typeset table:not([class]) {
+  display: block;
+  overflow-x: auto;
+}

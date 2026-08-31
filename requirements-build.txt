@@ -1,0 +1,7 @@
+build>=1.2
+setuptools>=77
+twine>=6
+wheel>=0.45
+
+# Used by the tagged-release workflow for keyless artifact signing.
+sigstore>=3

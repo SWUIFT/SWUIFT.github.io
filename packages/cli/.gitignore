@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtualenvs
+.venv/
+.venv*/
+venv/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# OS/editor
+.DS_Store
+
+# SWUIFT outputs (runtime data is controlled by the repository root)
+outputs/

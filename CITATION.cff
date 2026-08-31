@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing"
+type: software
+repository-code: "https://github.com/SWUIFT/SWUIFT.github.io"
+url: "https://swuift.github.io"
+doi: 10.5281/zenodo.22184759
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22184759
+abstract: >-
+  SWUIFT models fire spread within wildland-urban interface (WUI) and urban
+  communities using a semi-empirical approach. A three-domain solution is
+  utilized, defining wildland, transition and community domains following the
+  neighbourhood-based housing density (NBHD) method. Near- and far-field
+  transport mechanisms are captured, including thermal radiation and fire
+  spotting. SWUIFT considers urban and vegetative fuels and wind, and tracks
+  fire progression at a 10-meter resolution. Offline coupling with wildland
+  fire spread simulators is supported. Utilize the desktop application for an
+  interactive workflow or the command-line (CLI) for scripted and batch runs.
+  SWUIFT simulation results depend on input quality and modelling assumptions.
+  Analysis of results should rely on expert interpretation.
+authors:
+  - given-names: Nima
+    family-names: Masoudvaziri
+    affiliation: "Berkshire Hathaway Specialty Insurance"
+    orcid: "https://orcid.org/0000-0002-3025-8059"
+  - given-names: Fernando
+    family-names: Szasdi-Bardales
+    affiliation: "Department of Civil, Structural and Environmental Engineering, University at Buffalo"
+    orcid: "https://orcid.org/0000-0002-9643-5919"
+  - given-names: Utkarsh
+    family-names: Kumar
+    affiliation: "Department of Computer Science, CAICC, University of Texas at San Antonio"
+    orcid: "https://orcid.org/0000-0002-4442-8645"
+  - given-names: Jinjun
+    family-names: Xiong
+    affiliation: "Department of Computer Science, CAICC, University of Texas at San Antonio"
+    orcid: "https://orcid.org/0000-0002-2620-4859"
+  - given-names: Negar
+    family-names: Elhami-Khorasani
+    affiliation: "Department of Civil, Structural and Environmental Engineering, University at Buffalo"
+    orcid: "https://orcid.org/0000-0003-3228-0097"
+keywords:
+  - wildfire
+  - wildland-urban interface
+  - WUI
+  - fire spread modeling
+  - fire spotting
+  - thermal radiation
+  - housing density
+  - fire simulation

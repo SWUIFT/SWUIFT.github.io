@@ -1,0 +1,195 @@
+{
+  "artifacts": {
+    "Marshall_inputs.mat": {
+      "bytes": 261383,
+      "sha256": "389c40cfe21b6385dfe1caccd6e7ee215b78e11ccbbc33b37f5b50a855b5a8bd",
+      "variables": {
+        "binary_cover": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            965
+          ]
+        },
+        "homes_mat": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            965
+          ]
+        },
+        "knownig_mat": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            965
+          ]
+        },
+        "lati": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            1
+          ]
+        },
+        "long": {
+          "dtype": "float64",
+          "shape": [
+            965,
+            1
+          ]
+        }
+      }
+    },
+    "default_values.mat": {
+      "bytes": 2368,
+      "sha256": "93b00e09559a99661c7cdd1906cba35d42fbc1337d8aae457d80103526656bd8",
+      "variables": {
+        "multiple_configuration_scalars": {
+          "format": "MATLAB v5"
+        }
+      }
+    },
+    "domains_mat.mat": {
+      "bytes": 11632,
+      "sha256": "2c6b2f638a18635d1090296bd03f97684e00867a96b7e9bb01c0369b90ee63fe",
+      "variables": {
+        "domains_mat": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            965
+          ]
+        }
+      }
+    },
+    "standard.mat": {
+      "bytes": 366945,
+      "sha256": "76b6ba51ff47bb0615163bceee61d1d5d8df9b961604e05d191dde66144fd494",
+      "variables": {
+        "standard": {
+          "dtype": "float64",
+          "shape": [
+            864,
+            965
+          ]
+        }
+      }
+    },
+    "veg_knowing.mat": {
+      "bytes": 25481,
+      "sha256": "f3b0cbe5b993785048603d0f340307dd5378d03f860e2fbe2f76e04c37abea6b",
+      "variables": {
+        "veg_knowing": {
+          "dtype": "uint8",
+          "shape": [
+            864,
+            965
+          ]
+        }
+      }
+    },
+    "wind.mat": {
+      "bytes": 58150237,
+      "sha256": "0a639402c91e2c38ad27b8b8c20ac1ed9c0da56da70b2324577bc337dd746796",
+      "variables": {
+        "wind_d": {
+          "dtype": "float64",
+          "hdf5_storage_shape": [
+            121,
+            965,
+            864
+          ],
+          "logical_shape": [
+            864,
+            965,
+            121
+          ]
+        },
+        "wind_s": {
+          "dtype": "float64",
+          "hdf5_storage_shape": [
+            121,
+            965,
+            864
+          ],
+          "logical_shape": [
+            864,
+            965,
+            121
+          ]
+        }
+      }
+    }
+  },
+  "config": {
+    "brand_wind_coef": 30.0,
+    "brand_wind_sd": 0.3,
+    "brand_wind_sd_lat": 4.85,
+    "expected_steps": 121,
+    "grid_size": 13.875,
+    "harden_rad": 70.0,
+    "harden_spo": 70.0,
+    "hardening_profile": "matlab_inert",
+    "rad_decay": 1.0,
+    "rad_ig_thresh": 14000.0,
+    "rng_profile": "seeded",
+    "seed_harden": 123456,
+    "seed_spread": 10,
+    "t_end": "2021-12-30 21:00",
+    "t_start": "2021-12-30 11:00",
+    "timezone": "America/Denver"
+  },
+  "display_name": "Marshall public Python example (121 steps)",
+  "inputs": {
+    "bundle": {
+      "file": "Marshall_inputs.mat"
+    },
+    "defaults": {
+      "file": "default_values.mat"
+    },
+    "domains": {
+      "file": "domains_mat.mat",
+      "variable": "domains_mat"
+    },
+    "hardening": {
+      "file": "standard.mat",
+      "mode": "single_map",
+      "variable": "standard"
+    },
+    "known_ignition": {
+      "file": "veg_knowing.mat",
+      "variable": "veg_knowing"
+    },
+    "variables": {
+      "binary_cover": "binary_cover",
+      "homes_mat": "homes_mat",
+      "lati": "lati",
+      "long": "long",
+      "water": null
+    },
+    "wind": {
+      "direction_file": "wind.mat",
+      "direction_variable": "wind_d",
+      "layout": "rows_cols_time",
+      "packaging": "single_hdf5",
+      "speed_file": "wind.mat",
+      "speed_variable": "wind_s"
+    }
+  },
+  "matlab": {
+    "included": false
+  },
+  "scenario_id": "marshall",
+  "schema_version": 1,
+  "time": {
+    "basis": "local IANA timezone converted to UTC for simulation",
+    "end_inclusive_local": "2021-12-30T21:00:00-07:00",
+    "end_inclusive_utc": "2021-12-31T04:00:00Z",
+    "inclusive_timesteps": 121,
+    "local_zone": "America/Denver",
+    "start_inclusive_local": "2021-12-30T11:00:00-07:00",
+    "start_inclusive_utc": "2021-12-30T18:00:00Z",
+    "step_minutes": 5
+  }
+}

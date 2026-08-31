@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swuift"
+version = "1.0.0"
+description = "SWUIFT wildfire-urban-interface simulation (Python)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "LicenseRef-SWUIFT-Research-Academic-Use"
+license-files = ["LICENSE"]
+dependencies = [
+  "swuift-core==1.0.0",
+  "numpy",
+  "scipy",
+  "h5py",
+  "numba",
+  "matplotlib",
+  "imageio[ffmpeg]",
+  "Pillow",
+  "tqdm",
+  "av",
+  "tzdata==2026.3"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+# Repository and issue-tracker URLs must be added here before publication.
+# LICENSE is an exact package copy of the authoritative ../../LICENSE.
+
+[project.scripts]
+swuift = "swuift.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["swuift*"]
+
+[tool.setuptools.package-data]
+swuift = ["resources/scenarios/*.json"]

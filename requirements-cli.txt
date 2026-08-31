@@ -1,0 +1,4 @@
+# CLI-only source environment. The package metadata installs runtime
+# dependencies; these editable entries keep both local packages in sync.
+-e packages/core
+-e packages/cli

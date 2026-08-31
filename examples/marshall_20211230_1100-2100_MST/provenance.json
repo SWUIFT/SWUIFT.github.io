@@ -1,0 +1,45 @@
+{
+  "artifact_id": "marshall_20211230_1100-2100_MST",
+  "determinism": {
+    "generated_hdf5": "fixed dataset order, chunks, dtype, and compression",
+    "generated_mat_v5": "compressed with fixed 116-byte descriptive header",
+    "json": "sorted keys, UTF-8, LF, final newline"
+  },
+  "schema_version": 1,
+  "source": {
+    "approved_dataset": "SWUIFT-CORE/data/marshall",
+    "files": {
+      "Marshall_inputs.mat": "389c40cfe21b6385dfe1caccd6e7ee215b78e11ccbbc33b37f5b50a855b5a8bd",
+      "default_values.mat": "93b00e09559a99661c7cdd1906cba35d42fbc1337d8aae457d80103526656bd8",
+      "domains_mat.mat": "2c6b2f638a18635d1090296bd03f97684e00867a96b7e9bb01c0369b90ee63fe",
+      "marshal_wind.mat": "b62da2b79f1f41c4c5094f4b21cacbc395620bb3da5a677933394fa02f39c34a",
+      "standard.mat": "76b6ba51ff47bb0615163bceee61d1d5d8df9b961604e05d191dde66144fd494",
+      "veg_knowing.mat": "626536278d2ad86f4e6e3b996bf19b47a87d6348445a26a96a42b661757cddd3"
+    }
+  },
+  "transformations": {
+    "known_ignition": {
+      "maximum_output_timestep": 121,
+      "maximum_source_timestep": 144,
+      "policy": "values after timestep 121 are set to zero",
+      "positive_entries_after": 156168,
+      "positive_entries_before": 229184,
+      "post_cutoff_entries_zeroed": 73016
+    },
+    "static_inputs": "byte-for-byte copies of required approved inputs",
+    "wind": {
+      "output_file": "wind.mat",
+      "retained_inclusive_timesteps": 121,
+      "retained_zero_based_slice": [
+        0,
+        121
+      ],
+      "source_file": "marshal_wind.mat",
+      "source_timesteps": 144,
+      "variables": [
+        "wind_s",
+        "wind_d"
+      ]
+    }
+  }
+}

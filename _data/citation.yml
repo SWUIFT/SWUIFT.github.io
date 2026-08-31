@@ -1,0 +1,32 @@
+title: 'SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing'
+repository_code: https://github.com/SWUIFT/SWUIFT.github.io
+url: https://swuift.github.io
+authors:
+- given_names: Nima
+  family_names: Masoudvaziri
+  name: Nima Masoudvaziri
+  affiliation: Berkshire Hathaway Specialty Insurance
+  orcid: https://orcid.org/0000-0002-3025-8059
+- given_names: Fernando
+  family_names: Szasdi-Bardales
+  name: Fernando Szasdi-Bardales
+  affiliation: Department of Civil, Structural and Environmental Engineering, University at Buffalo
+  orcid: https://orcid.org/0000-0002-9643-5919
+- given_names: Utkarsh
+  family_names: Kumar
+  name: Utkarsh Kumar
+  affiliation: Department of Computer Science, CAICC, University of Texas at San Antonio
+  orcid: https://orcid.org/0000-0002-4442-8645
+- given_names: Jinjun
+  family_names: Xiong
+  name: Jinjun Xiong
+  affiliation: Department of Computer Science, CAICC, University of Texas at San Antonio
+  orcid: https://orcid.org/0000-0002-2620-4859
+- given_names: Negar
+  family_names: Elhami-Khorasani
+  name: Negar Elhami-Khorasani
+  affiliation: Department of Civil, Structural and Environmental Engineering, University at Buffalo
+  orcid: https://orcid.org/0000-0003-3228-0097
+author_text: Nima Masoudvaziri, Fernando Szasdi-Bardales, Utkarsh Kumar, Jinjun Xiong, and Negar Elhami-Khorasani
+bibtex: "@software{swuift,\n  author = {Masoudvaziri, Nima and Szasdi-Bardales, Fernando and Kumar, Utkarsh and Xiong, Jinjun and Elhami-Khorasani, Negar},\n  title = {SWUIFT: Streamlined Wildland-Urban Interface Fire Tracing},\n  url = {https://swuift.github.io},\n  doi = {10.5281/zenodo.22184759}\n}"
+doi: 10.5281/zenodo.22184759

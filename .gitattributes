@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.iss text eol=crlf
+*.png binary
+*.ico binary
+*.icns binary
+*.h5 binary
+*.hdf5 binary
+*.mat binary
+*.npy binary
+*.npz binary
+*.mp4 binary
+
+packages/cli/** whitespace=trailing-space,space-before-tab,cr-at-eol

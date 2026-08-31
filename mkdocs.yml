@@ -1,0 +1,94 @@
+site_name: SWUIFT
+site_description: User documentation for the SWUIFT wildfire–urban interface simulator
+site_url: https://swuift.github.io/
+repo_url: https://github.com/SWUIFT/SWUIFT.github.io
+repo_name: SWUIFT/SWUIFT.github.io
+edit_uri: ""
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  logo: assets/SWUIFT_logo.png
+  favicon: assets/favicon.png
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Use dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Use light mode
+
+extra_css:
+  - stylesheets/branding.css
+
+nav:
+  - Overview: index.md
+  - Downloads: downloads.md
+  - Install & verify: installation.md
+  - Use:
+      - Input schema: input-schema.md
+      - Desktop GUI: gui.md
+      - Command line: cli.md
+      - Timezone codes: timezones.md
+      - Marshall tutorial: marshall-tutorial.md
+      - Expected outputs: outputs.md
+  - Project:
+      - Citation, DOI & license: citation-license.md
+      - Complete license: license.md
+      - Troubleshooting & contact: troubleshooting.md
+
+# Keep legacy /verification/ as a redirect page without listing it in the nav.
+not_in_nav: |
+  /verification.md
+
+exclude_docs: |
+  /_generated/**
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/SWUIFT/SWUIFT.github.io
+      name: SWUIFT repository
+
+copyright: Copyright &copy; 2026 The Research Foundation for the State University of New York

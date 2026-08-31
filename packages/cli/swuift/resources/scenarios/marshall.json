@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scenario_id": "marshall",
+  "display_name": "Marshall",
+  "inputs": {
+    "defaults": {"file": "default_values.mat"},
+    "bundle": {"file": "Marshall_inputs.mat"},
+    "variables": {
+      "binary_cover": "binary_cover",
+      "homes_mat": "homes_mat",
+      "lati": "lati",
+      "long": "long",
+      "water": null
+    },
+    "domains": {"file": "domains_mat.mat", "variable": "domains_mat"},
+    "known_ignition": {"file": "veg_knowing.mat", "variable": "veg_knowing"},
+    "hardening": {
+      "mode": "single_map",
+      "file": "standard.mat",
+      "variable": "standard"
+    },
+    "wind": {
+      "packaging": "single_hdf5",
+      "speed_file": "wind.mat",
+      "direction_file": "wind.mat",
+      "speed_variable": "wind_s",
+      "direction_variable": "wind_d",
+      "layout": "rows_cols_time"
+    }
+  },
+  "config": {
+    "grid_size": 13.875,
+    "t_start": "2021-12-30 11:00",
+    "t_end": "2021-12-30 21:00",
+    "timezone": "America/Denver",
+    "expected_steps": 121,
+    "harden_rad": 70.0,
+    "harden_spo": 70.0,
+    "rad_ig_thresh": 14000.0,
+    "rad_decay": 1.0,
+    "brand_wind_coef": 30.0,
+    "brand_wind_sd": 0.3,
+    "brand_wind_sd_lat": 4.85,
+    "hardening_profile": "matlab_inert",
+    "rng_profile": "seeded",
+    "seed_harden": 123456,
+    "seed_spread": 10
+  }
+}

@@ -1,0 +1,10 @@
+numpy
+scipy
+h5py
+numba
+matplotlib
+imageio[ffmpeg]
+Pillow
+tqdm
+av
+tzdata==2026.3

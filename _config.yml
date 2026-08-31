@@ -1,0 +1,40 @@
+title: SWUIFT
+url: https://swuift.github.io
+baseurl: ""
+destination: _site
+
+exclude:
+  - .github
+  - .mypy_cache
+  - .pytest_cache
+  - .ruff_cache
+  - .zenodo.json
+  - AUTHORS.md
+  - CITATION.cff
+  - CLI_MANUAL.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - MANUAL.md
+  - README.md
+  - SECURITY.md
+  - THIRD_PARTY_NOTICES.md
+  - apps
+  - assets
+  - build
+  - dist
+  - docs
+  - environment.yml
+  - examples
+  - mkdocs.yml
+  - overrides
+  - packages
+  - public-boundary.toml
+  - pyproject.toml
+  - requirements-build.txt
+  - requirements-cli.txt
+  - requirements-dev.txt
+  - requirements.txt
+  - scripts
+  - site
+  - tests

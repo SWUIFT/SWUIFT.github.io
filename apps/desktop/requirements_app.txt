@@ -1,0 +1,16 @@
+-e ../../packages/core
+-e ../../packages/cli
+# Keep the JIT stack on releases with Python 3.12 wheels for Intel macOS.
+numpy>=1.26.4,<2.3
+scipy
+h5py
+matplotlib
+imageio[ffmpeg]
+tqdm
+av
+numba==0.61.2
+llvmlite==0.44.0
+PySide6>=6.6
+pyinstaller>=6.0
+Pillow
+tzdata==2026.3

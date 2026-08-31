@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {# Condensed SWUIFT mark only — sized favicons with cache-busting. #}
+  <link rel="icon" href="{{ 'assets/favicon.ico' | url }}?v=20260824" sizes="any">
+  <link rel="icon" type="image/png" href="{{ 'assets/favicon-32.png' | url }}?v=20260824" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ 'assets/favicon-48.png' | url }}?v=20260824" sizes="48x48">
+  <link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.png' | url }}?v=20260824">
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+  <div class="swuift-corner-marks" aria-hidden="true">
+    <img
+      class="swuift-corner-mark swuift-corner-mark--left swuift-corner-mark--light"
+      src="{{ 'assets/khorasani-icon-black.svg' | url }}"
+      width="84"
+      height="84"
+      alt=""
+    >
+    <img
+      class="swuift-corner-mark swuift-corner-mark--left swuift-corner-mark--dark"
+      src="{{ 'assets/khorasani-icon-white.svg' | url }}"
+      width="84"
+      height="84"
+      alt=""
+    >
+    <img
+      class="swuift-corner-mark swuift-corner-mark--right swuift-corner-mark--light"
+      src="{{ 'assets/xlab-mark-black-1024.png' | url }}"
+      width="84"
+      height="84"
+      alt=""
+    >
+    <img
+      class="swuift-corner-mark swuift-corner-mark--right swuift-corner-mark--dark"
+      src="{{ 'assets/xlab-mark-white-1024.png' | url }}"
+      width="84"
+      height="84"
+      alt=""
+    >
+  </div>
+{% endblock %}

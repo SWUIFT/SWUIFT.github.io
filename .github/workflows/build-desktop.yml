@@ -1,0 +1,223 @@
+name: Build SWUIFT desktop app
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  macos:
+    name: macOS ${{ matrix.arch }} (.app + .dmg)
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-14
+          - arch: x86_64
+            runner: macos-15-intel
+    runs-on: ${{ matrix.runner }}
+    env:
+      APPLE_CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+      APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+      APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+      APPLE_NOTARY_KEY_BASE64: ${{ secrets.APPLE_NOTARY_KEY_BASE64 }}
+      APPLE_NOTARY_KEY_ID: ${{ secrets.APPLE_NOTARY_KEY_ID }}
+      APPLE_NOTARY_ISSUER_ID: ${{ secrets.APPLE_NOTARY_ISSUER_ID }}
+    defaults:
+      run:
+        working-directory: apps/desktop
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          architecture: ${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements_app.txt
+
+      - name: Generate assets and build metadata
+        run: |
+          python build_assets.py
+          printf '%s\n' "${GITHUB_REF_NAME}-${GITHUB_SHA::12}" > BUILD_INFO
+
+      - name: Build .app with PyInstaller
+        run: |
+          pyinstaller swuift_app.spec --noconfirm --clean
+          ls -la dist
+          python ../../scripts/check_desktop_bundle.py dist/SWUIFT.app
+
+      - name: Import Apple signing certificate
+        if: ${{ startsWith(github.ref, 'refs/tags/') && env.APPLE_CERTIFICATE_BASE64 != '' && env.APPLE_CERTIFICATE_PASSWORD != '' && env.APPLE_SIGNING_IDENTITY != '' }}
+        env:
+          CERTIFICATE_BASE64: ${{ env.APPLE_CERTIFICATE_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ env.APPLE_CERTIFICATE_PASSWORD }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/swuift-signing.keychain-db"
+          security create-keychain -p actions "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p actions "$KEYCHAIN"
+          printf '%s' "$CERTIFICATE_BASE64" | base64 --decode > "$RUNNER_TEMP/certificate.p12"
+          security import "$RUNNER_TEMP/certificate.p12" -P "$CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security list-keychain -d user -s "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -s -k actions "$KEYCHAIN"
+          codesign --force --deep --options runtime --timestamp --sign "$APPLE_SIGNING_IDENTITY" dist/SWUIFT.app
+          codesign --verify --deep --strict --verbose=2 dist/SWUIFT.app
+
+      - name: Create .dmg
+        run: |
+          STAGE=$(mktemp -d)
+          cp -R "dist/SWUIFT.app" "$STAGE/"
+          cp ../../LICENSE ../../THIRD_PARTY_NOTICES.md "$STAGE/"
+          hdiutil create \
+            -volname "SWUIFT" \
+            -srcfolder "$STAGE" \
+            -ov -format UDZO \
+            "dist/SWUIFT_macOS_${{ matrix.arch }}.dmg"
+
+      - name: Notarize signed DMG
+        if: ${{ startsWith(github.ref, 'refs/tags/') && env.APPLE_SIGNING_IDENTITY != '' && env.APPLE_NOTARY_KEY_BASE64 != '' && env.APPLE_NOTARY_KEY_ID != '' && env.APPLE_NOTARY_ISSUER_ID != '' }}
+        env:
+          NOTARY_KEY_BASE64: ${{ env.APPLE_NOTARY_KEY_BASE64 }}
+          NOTARY_KEY_ID: ${{ env.APPLE_NOTARY_KEY_ID }}
+          NOTARY_ISSUER_ID: ${{ env.APPLE_NOTARY_ISSUER_ID }}
+        run: |
+          printf '%s' "$NOTARY_KEY_BASE64" | base64 --decode > "$RUNNER_TEMP/AuthKey.p8"
+          xcrun notarytool submit "dist/SWUIFT_macOS_${{ matrix.arch }}.dmg" \
+            --key "$RUNNER_TEMP/AuthKey.p8" --key-id "$NOTARY_KEY_ID" \
+            --issuer "$NOTARY_ISSUER_ID" --wait
+          xcrun stapler staple "dist/SWUIFT_macOS_${{ matrix.arch }}.dmg"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: SWUIFT-macos-${{ matrix.arch }}
+          path: |
+            apps/desktop/dist/SWUIFT.app
+            apps/desktop/dist/SWUIFT_macOS_${{ matrix.arch }}.dmg
+          if-no-files-found: error
+
+  windows-x64:
+    name: Windows x64 (.exe + Inno Setup installer)
+    runs-on: windows-latest
+    env:
+      WINDOWS_CERTIFICATE_BASE64: ${{ secrets.WINDOWS_CERTIFICATE_BASE64 }}
+      WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+    defaults:
+      run:
+        working-directory: apps/desktop
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          architecture: x64
+
+      - name: Install build dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements_app.txt
+
+      - name: Generate assets and build metadata
+        shell: pwsh
+        run: |
+          python build_assets.py
+          "${env:GITHUB_REF_NAME}-$($env:GITHUB_SHA.Substring(0,12))" | Set-Content BUILD_INFO
+
+      - name: Build .exe with PyInstaller
+        shell: pwsh
+        run: |
+          pyinstaller swuift_app.spec --noconfirm --clean
+          Get-ChildItem dist
+          python ../../scripts/check_desktop_bundle.py dist/SWUIFT
+
+      - name: Sign Windows application
+        if: ${{ startsWith(github.ref, 'refs/tags/') && env.WINDOWS_CERTIFICATE_BASE64 != '' && env.WINDOWS_CERTIFICATE_PASSWORD != '' }}
+        shell: pwsh
+        env:
+          CERTIFICATE_BASE64: ${{ env.WINDOWS_CERTIFICATE_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ env.WINDOWS_CERTIFICATE_PASSWORD }}
+        run: |
+          $cert = Join-Path $env:RUNNER_TEMP "swuift-signing.pfx"
+          [IO.File]::WriteAllBytes($cert, [Convert]::FromBase64String($env:CERTIFICATE_BASE64))
+          & signtool sign /fd SHA256 /td SHA256 /tr http://timestamp.digicert.com /f $cert /p $env:CERTIFICATE_PASSWORD dist/SWUIFT/SWUIFT.exe
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+
+      - name: Build installer with Inno Setup
+        shell: pwsh
+        run: |
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { $iscc = "C:\Program Files\Inno Setup 6\ISCC.exe" }
+          $version = "1.0.0"
+          if ($env:GITHUB_REF -like "refs/tags/v*") { $version = $env:GITHUB_REF_NAME.TrimStart("v") }
+          & "$iscc" "/DMyAppVersion=$version" swuift_setup.iss
+
+      - name: Sign Windows installer
+        if: ${{ startsWith(github.ref, 'refs/tags/') && env.WINDOWS_CERTIFICATE_BASE64 != '' && env.WINDOWS_CERTIFICATE_PASSWORD != '' }}
+        shell: pwsh
+        env:
+          CERTIFICATE_BASE64: ${{ env.WINDOWS_CERTIFICATE_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ env.WINDOWS_CERTIFICATE_PASSWORD }}
+        run: |
+          $cert = Join-Path $env:RUNNER_TEMP "swuift-signing.pfx"
+          & signtool sign /fd SHA256 /td SHA256 /tr http://timestamp.digicert.com /f $cert /p $env:CERTIFICATE_PASSWORD (Get-Item dist/SWUIFT_Setup_*.exe).FullName
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: SWUIFT-windows-x64
+          path: |
+            apps/desktop/dist/SWUIFT/**
+            apps/desktop/dist/SWUIFT_Setup_*.exe
+          if-no-files-found: error
+
+  publish:
+    name: Publish tagged desktop assets
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [macos, windows-x64]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: SWUIFT-*
+          path: release-assets
+          merge-multiple: true
+      - name: Publish release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || \
+            gh release create "${GITHUB_REF_NAME}" --generate-notes
+          mapfile -d '' assets < <(find release-assets -type f \
+            \( -name '*.dmg' -o -name 'SWUIFT_Setup_*.exe' \) -print0)
+          if [ "${#assets[@]}" -eq 0 ]; then
+            echo "No desktop installers found under release-assets" >&2
+            find release-assets -type f | head
+            exit 1
+          fi
+          printf 'Uploading %s assets:\n' "${#assets[@]}"
+          printf '  %s\n' "${assets[@]}"
+          gh release upload "${GITHUB_REF_NAME}" "${assets[@]}" --clobber

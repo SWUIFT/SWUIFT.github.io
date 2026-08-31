@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+include = [
+  "scripts/check_jekyll_output.py",
+  "scripts/check_public_boundary.py",
+  "scripts/check_release_metadata.py",
+  "scripts/generate_citation_data.py",
+  "scripts/generate_sha256_manifest.py",
+  "scripts/verify_sha256_manifest.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+files = [
+  "scripts/check_jekyll_output.py",
+  "scripts/check_public_boundary.py",
+  "scripts/check_release_metadata.py",
+  "scripts/generate_citation_data.py",
+  "scripts/generate_sha256_manifest.py",
+  "scripts/verify_sha256_manifest.py",
+]
+strict = true
+pretty = true
+show_error_codes = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-config", "--strict-markers"]
