@@ -4,10 +4,22 @@
 
 ![SWUIFT Banner](./SWUIFT%20LOGO.png)
 
-SWUIFT CLI v1 is jointly created by X-Lab, CSE and Khorasani Research Group, CSEE
+# SWUIFT
 
-The usage is strictly limited to the two groups.
-To share externally request permission from Prof. Khorasani and/or Prof. Xiong
+**Streamlined Wildland-Urban Interface Fire Tracing**
+
+SWUIFT models fire spread within wildland-urban interface (WUI) and urban
+communities using a semi-empirical approach. A **three-domain** solution is
+utilized, defining wildland, transition and community domains following the
+neighbourhood-based housing density (NBHD) method. Near- and far-field
+transport mechanisms are captured, including thermal radiation and fire
+spotting. SWUIFT considers urban and vegetative fuels and wind, and tracks fire
+progression at a 10-meter resolution. Offline coupling with wildland fire
+spread simulators is supported. Utilize the desktop application for an
+interactive workflow or the command-line (CLI) for scripted and batch runs.
+
+SWUIFT simulation results depend on input quality and modelling assumptions.
+Analysis of results should rely on expert interpretation.
 
 # SWUIFT User Manual
 
